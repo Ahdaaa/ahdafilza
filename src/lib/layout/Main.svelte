@@ -43,9 +43,9 @@
 <main
 	bind:this={snapContainer}
 	onwheel={onWheel}
-	class="no-scrollbar h-[calc(100vh-8rem)] overflow-hidden scroll-smooth text-black dark:text-white"
+	class="no-scrollbar h-[calc(100vh-8rem)] overflow-y-scroll scroll-smooth text-black md:overflow-hidden dark:text-white"
 >
-	<section id="profile" class="h-full">Profile</section>
-	<section id="projects" class="h-full">Projects</section>
-	<section id="contact" class="h-full">Contact</section>
+	<section id="profile" class="flex h-full items-center justify-center">Profile</section>
+	<section id="projects" class="flex h-full items-center justify-center">Projects</section>
+	<section id="contact" class="flex h-full items-center justify-center">Contact</section>
 </main>
