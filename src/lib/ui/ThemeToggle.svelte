@@ -1,29 +1,19 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	let isDark: boolean;
-
-	onMount(() => {
-		isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		document.documentElement.classList.toggle('dark', isDark);
-	});
+	import { theme } from '$lib/stores/theme';
 
 	function toggle() {
-		isDark = !isDark;
-		document.documentElement.classList.toggle('dark', isDark);
-	}
-</script>
+		theme.update((current) => {
+			const next = current === 'dark' ? 'light' : 'dark';
 
-<!-- this is to prevent flickering on mounted -->
-<svelte:head>
-	<script>
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	</script>
-</svelte:head>
+			localStorage.theme = next;
+			document.documentElement.classList.toggle('dark', next === 'dark');
+
+			return next;
+		});
+	}
+
+	$: isDark = $theme === 'dark';
+</script>
 
 <button
 	on:click={toggle}
