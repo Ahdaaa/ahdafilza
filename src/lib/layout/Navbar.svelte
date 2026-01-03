@@ -1,44 +1,68 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import ThemeToggle from '$lib/ui/ThemeToggle.svelte';
-	import { NAV_SECTIONS } from '$lib/config/navigation';
+	import NavList from '$lib/ui/NavList.svelte';
 
 	const {
 		activeHash = '#profile',
 		onNavigate
 	}: { activeHash: string; onNavigate: (index: number) => void } = $props();
 
+	let togglePopup = $state(false);
+
 	const isSectionActive = (i: string) => {
 		return activeHash === `#${i}`;
 	};
+
+	const navigate = (index: number) => {
+		if (togglePopup) togglePopup = false;
+		onNavigate(index);
+	};
 </script>
 
-<nav class="font-roboto flex h-32 items-center px-8">
-	<div class="flex-1 text-2xl text-black hover:cursor-pointer dark:text-white">
+<nav class="flex h-32 items-center justify-between px-8 font-roboto md:justify-start">
+	<div class="flex text-base text-black hover:cursor-pointer md:flex-1 md:text-2xl dark:text-white">
 		<h1 class="leading-tight">
 			<span class="font-extrabold">Ahda</span><br />
 			Filza Ghaffaru.
 		</h1>
 	</div>
 
-	<ul class="flex gap-6 text-gray-400 dark:text-gray-700">
-		{#each NAV_SECTIONS as i, index}
-			<li class=" hover:text-black dark:hover:text-white">
-				<button
-					class="relative cursor-pointer pb-1 data-[active=true]:text-black dark:data-[active=true]:text-white"
-					data-active={isSectionActive(i.id)}
-					onclick={() => onNavigate(index)}
-				>
-					{i.label}
-
-					{#if isSectionActive(i.id)}
-						<span class="absolute bottom-0 left-0 h-0.5 w-full bg-black dark:bg-white"></span>
-					{/if}
-				</button>
-			</li>
-		{/each}
+	<ul class="hidden gap-6 text-gray-400 md:flex dark:text-gray-700">
+		<NavList {isSectionActive} {navigate} />
 	</ul>
 
-	<div class="flex flex-1 justify-end">
+	<div class="hidden flex-1 justify-end md:flex">
 		<ThemeToggle />
 	</div>
+
+	<!-- mobile button -->
+	<button
+		class="cursor-pointer text-xl text-black md:hidden dark:text-white"
+		title="List Popup"
+		onclick={() => (togglePopup = true)}
+	>
+		☰
+	</button>
 </nav>
+
+<!-- mobile popup -->
+{#if togglePopup}
+	<div
+		in:fade
+		out:fade
+		class="fixed inset-0 z-100 flex items-center justify-center bg-white dark:bg-gray-950"
+	>
+		<button
+			class="absolute top-12 right-8 cursor-pointer text-xl text-black md:hidden dark:text-white"
+			title="List Popup"
+			onclick={() => (togglePopup = false)}
+		>
+			✕
+		</button>
+		<ul class="flex flex-col items-center gap-6 text-xl text-gray-400 dark:text-gray-700">
+			<NavList {isSectionActive} {navigate} />
+			<ThemeToggle />
+		</ul>
+	</div>
+{/if}
