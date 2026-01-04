@@ -8,7 +8,7 @@
 </script>
 
 {#each NAV_SECTIONS as i, index}
-	<li class="hover:text-black dark:hover:text-white">
+	<li class="text-gray-400 hover:text-black dark:hover:text-white">
 		<button
 			class="relative cursor-pointer pb-1 data-[active=true]:text-black dark:data-[active=true]:text-white"
 			data-active={isSectionActive(i.id)}

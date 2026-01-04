@@ -3,6 +3,15 @@
 @plugin '@tailwindcss/typography';
 @config '../../tailwind.config.js';
 
+html {
+	background-color: #ffffff;
+	transition: background-color 1s ease;
+}
+
+html.dark {
+	background-color: #262626;
+}
+
 @layer utilities {
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {

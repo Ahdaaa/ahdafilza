@@ -27,7 +27,7 @@
 	});
 </script>
 
-<div class="min-h-screen bg-white dark:bg-gray-950">
+<div>
 	{#if show}
 		<div in:fade={{ duration: 700 }}>
 			<Navbar {activeHash} {onNavigate} />

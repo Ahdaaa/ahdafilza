@@ -20,7 +20,9 @@
 	};
 </script>
 
-<nav class="flex h-32 items-center justify-between px-8 font-roboto md:justify-start">
+<nav
+	class="z-50 flex h-32 w-full items-center justify-between px-8 font-roboto md:fixed md:top-0 md:left-0 md:justify-start"
+>
 	<div class="flex text-base text-black hover:cursor-pointer md:flex-1 md:text-2xl dark:text-white">
 		<h1 class="leading-tight">
 			<span class="font-extrabold">Ahda</span><br />
@@ -38,7 +40,7 @@
 
 	<!-- mobile button -->
 	<button
-		class="cursor-pointer text-xl text-black md:hidden dark:text-white"
+		class="fixed right-8 z-51 cursor-pointer text-xl text-black md:hidden dark:text-white"
 		title="List Popup"
 		onclick={() => (togglePopup = true)}
 	>
