@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Profile from './Profile.svelte';
+
 	let snapContainer: HTMLElement | null = $state(null);
 	let isLocked = false;
 
@@ -43,9 +45,9 @@
 <main
 	bind:this={snapContainer}
 	onwheel={onWheel}
-	class="no-scrollbar h-[calc(100vh-8rem)] overflow-y-scroll scroll-smooth text-black md:overflow-hidden dark:text-white"
+	class="no-scrollbar h-screen scroll-smooth pt-5 text-black md:overflow-hidden md:pt-0 dark:text-white"
 >
-	<section id="profile" class="flex h-full items-center justify-center">Profile</section>
-	<section id="projects" class="flex h-full items-center justify-center">Projects</section>
-	<section id="contact" class="flex h-full items-center justify-center">Contact</section>
+	<section id="profile" class="h-full"><Profile /></section>
+	<section id="projects" class="flex h-full items-center justify-center">Ini Project</section>
+	<section id="contact" class="flex h-full items-center justify-center">Ini Contact</section>
 </main>
