@@ -8,10 +8,12 @@
 	const SCROLL_LOCK_MS = 700;
 	let currentIndex = $state(0);
 	const { onIndexChange }: { onIndexChange: (index: number) => void } = $props();
+	function isMobile(): boolean {
+		return window.matchMedia('(max-width: 768px)').matches;
+	}
 
 	function onWheel(event: WheelEvent): void {
-		const isMobile = window.matchMedia('(max-width: 768px)').matches;
-		if (isLocked || isMobile) return;
+		if (isLocked || isMobile()) return;
 
 		const direction = Math.sign(event.deltaY);
 
@@ -25,12 +27,10 @@
 	function scrollToIndex(index: number): void {
 		if (index < 0 || index >= SECTION_COUNT) return;
 
-		const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
 		currentIndex = index;
 		onIndexChange(index);
 
-		if (isMobile) {
+		if (isMobile()) {
 			const sections = snapContainer?.children;
 			const target = sections?.[index] as HTMLElement;
 
@@ -58,7 +58,7 @@
 	}
 
 	window.addEventListener('resize', () => {
-		scrollToIndex(currentIndex);
+		if (!isMobile()) scrollToIndex(currentIndex);
 	});
 
 	export { scrollToIndex };
