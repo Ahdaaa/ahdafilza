@@ -10,7 +10,8 @@
 	const { onIndexChange }: { onIndexChange: (index: number) => void } = $props();
 
 	function onWheel(event: WheelEvent): void {
-		if (isLocked) return;
+		const isMobile = window.matchMedia('(max-width: 768px)').matches;
+		if (isLocked || isMobile) return;
 
 		const direction = Math.sign(event.deltaY);
 
@@ -22,12 +23,29 @@
 	}
 
 	function scrollToIndex(index: number): void {
-		if (!snapContainer) return;
 		if (index < 0 || index >= SECTION_COUNT) return;
 
-		isLocked = true;
+		const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
 		currentIndex = index;
 		onIndexChange(index);
+
+		if (isMobile) {
+			const sections = snapContainer?.children;
+			const target = sections?.[index] as HTMLElement;
+
+			target?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+
+			return;
+		}
+
+		// desktop behavior
+		if (!snapContainer) return;
+
+		isLocked = true;
 
 		snapContainer.scrollTo({
 			top: index * snapContainer.clientHeight,
@@ -38,6 +56,10 @@
 			isLocked = false;
 		}, SCROLL_LOCK_MS);
 	}
+
+	window.addEventListener('resize', () => {
+		scrollToIndex(currentIndex);
+	});
 
 	export { scrollToIndex };
 </script>
