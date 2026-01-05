@@ -12,6 +12,12 @@
 			Express, Fastify, and Gin & Gorm.
 		</text>
 
+		<div
+			class="mt-2 w-fit rounded-full bg-white text-xs duration-500 hover:bg-gray-300 hover:px-2 dark:bg-[#262626] hover:dark:bg-[#44444E]"
+		>
+			<a href="/cv_ahdafilza.pdf" target="_blank"> Get My Resume</a>
+		</div>
+
 		<div class="mt-5 flex justify-center gap-2 md:mt-2 md:justify-start">
 			{#each SKILLS_SECTIONS as s}
 				<div
@@ -19,7 +25,7 @@
 				>
 					<img alt={s.alt} src={s.src} />
 					<span
-						class="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full p-1 text-center text-xs whitespace-nowrap opacity-0 transition duration-500 group-hover:opacity-100 dark:bg-[#44444E]"
+						class="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full px-2 py-1 text-center text-xs whitespace-nowrap opacity-0 transition duration-500 group-hover:opacity-100 dark:bg-[#44444E]"
 						>{s.text}</span
 					>
 				</div>
