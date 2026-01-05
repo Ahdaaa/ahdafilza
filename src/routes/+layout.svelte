@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
 	import { theme } from '$lib/stores/theme';
 
@@ -23,7 +22,6 @@
 
 <!-- this is to prevent flickering on mounted -->
 <svelte:head>
-	<link rel="icon" href={favicon} />
 	<script>
 		if (
 			localStorage.theme === 'dark' ||
