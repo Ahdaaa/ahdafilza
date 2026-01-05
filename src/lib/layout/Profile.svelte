@@ -3,12 +3,14 @@
 	import { SKILLS_SECTIONS } from '$lib/config/skills';
 </script>
 
-<div class="flex h-full flex-col items-center justify-center gap-10 font-roboto md:flex-row">
+<div
+	class="mx-auto flex h-full max-w-max flex-col items-center justify-center gap-10 font-roboto md:flex-row"
+>
 	<div class="w-fit px-10 md:w-2/6 md:px-0">
 		<h1 class="mb-5 text-xl font-extrabold">Hello, <br />My name is Ahda.</h1>
 		<p class="text-sm">Im into Software Engineering.</p>
-		<text class="text-sm"
-			>I usually work with React/Next, Vue, Svelte, and .NET Maui while also quite familiar with
+		<text class="text-sm">
+			I usually work with React/Next, Vue, Svelte, and .NET Maui while also quite familiar with
 			Express, Fastify, and Gin & Gorm.
 		</text>
 

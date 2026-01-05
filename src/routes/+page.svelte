@@ -27,14 +27,12 @@
 	});
 </script>
 
-<div>
-	{#if show}
-		<div in:fade={{ duration: 700 }}>
-			<Navbar {activeHash} {onNavigate} />
+{#if show}
+	<div in:fade={{ duration: 1000 }}>
+		<Navbar {activeHash} {onNavigate} />
 
-			<Main bind:this={mainRef} {onIndexChange} />
+		<Main bind:this={mainRef} {onIndexChange} />
 
-			<footer></footer>
-		</div>
-	{/if}
-</div>
+		<footer></footer>
+	</div>
+{/if}
