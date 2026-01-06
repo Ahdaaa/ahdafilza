@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Profile from './Profile.svelte';
+	import Projects from './Projects.svelte';
 
 	let snapContainer: HTMLElement | null = $state(null);
 	let isLocked = false;
@@ -70,6 +71,6 @@
 	class="no-scrollbar h-screen scroll-smooth pt-5 text-black md:overflow-hidden md:pt-0 dark:text-white"
 >
 	<section id="profile" class="h-full"><Profile /></section>
-	<section id="projects" class="flex h-full items-center justify-center">Ini Project</section>
+	<section id="projects" class="flex h-full"><Projects /></section>
 	<section id="contact" class="flex h-full items-center justify-center">Ini Contact</section>
 </main>
