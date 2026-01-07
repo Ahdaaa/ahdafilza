@@ -12,11 +12,12 @@
 		});
 	}
 
-	$: isDark = $theme === 'dark';
+	// derived is kind of the same as computed vue i think (?)
+	let isDark = $derived($theme === 'dark');
 </script>
 
 <button
-	on:click={toggle}
+	onclick={toggle}
 	class="relative h-5 w-10 cursor-pointer rounded-full bg-gray-200"
 	title="Toggle Dark Mode"
 	aria-pressed={isDark}
