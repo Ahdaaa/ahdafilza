@@ -15,6 +15,7 @@ export const SKILLS_SECTIONS = [
 	{ src: go, alt: 'Golang', text: 'Golang' }
 ];
 
+// TODO: fill with my past projects
 export const PROJECT_SECTIONS = [
 	{
 		src: project_1,
@@ -23,5 +24,13 @@ export const PROJECT_SECTIONS = [
 		company: 'PT. Kibar Produk Nusantara',
 		desc: 'Diginata comprises of two (2) distinct applications. MediaController (MC) is a standalone display signage with simple content authoring and scheduling. Media Manager (MM), a more advanced authoring systems and central management of the MCs.',
 		stack: ['Vue', '.NET MAUI', 'Fastify', 'Redis', 'Postgresql']
+	},
+	{
+		src: project_1,
+		alt: 'Diginata Marketing',
+		header: 'Diginata Marketing',
+		company: 'PT. Kibar Produk Nusantara',
+		desc: '',
+		stack: ['NextJS', 'Express', 'Midtrans', 'Postgresql']
 	}
 ];
