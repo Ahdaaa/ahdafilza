@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import Contacts from './Contacts.svelte';
 	import Profile from './Profile.svelte';
 	import Projects from './Projects.svelte';
 
@@ -9,9 +11,6 @@
 	const SCROLL_LOCK_MS = 700;
 	let currentIndex = $state(0);
 	const { onIndexChange }: { onIndexChange: (index: number) => void } = $props();
-	function isMobile(): boolean {
-		return window.matchMedia('(max-width: 768px)').matches;
-	}
 
 	function onWheel(event: WheelEvent): void {
 		if (isLocked || isMobile()) return;
@@ -43,7 +42,6 @@
 			return;
 		}
 
-		// desktop behavior
 		if (!snapContainer) return;
 
 		isLocked = true;
@@ -58,8 +56,21 @@
 		}, SCROLL_LOCK_MS);
 	}
 
-	window.addEventListener('resize', () => {
-		if (!isMobile()) scrollToIndex(currentIndex);
+	function isMobile(): boolean {
+		return window.matchMedia('(max-width: 768px)').matches;
+	}
+
+	// we check for resize to prevent active navbar not matching
+	onMount(() => {
+		const onResize = () => {
+			scrollToIndex(currentIndex);
+		};
+
+		window.addEventListener('resize', onResize);
+
+		return () => {
+			window.removeEventListener('resize', onResize);
+		};
 	});
 
 	export { scrollToIndex };
@@ -68,9 +79,14 @@
 <main
 	bind:this={snapContainer}
 	onwheel={onWheel}
-	class="no-scrollbar h-screen scroll-smooth pt-5 text-black md:overflow-hidden md:pt-0 dark:text-white"
+	class="no-scrollbar h-screen scroll-smooth text-black md:overflow-hidden dark:text-white"
 >
-	<section id="profile" class="h-full"><Profile /></section>
-	<section id="projects" class="flex h-full"><Projects /></section>
-	<section id="contact" class="flex h-full items-center justify-center">Ini Contact</section>
+	<section id="profile" class="flex min-h-screen"><Profile /></section>
+	<section id="projects" class="flex min-h-screen py-20 md:py-0">
+		<Projects />
+	</section>
+	<section id="contact" class="flex min-h-screen flex-col">
+		<Contacts />
+		<footer class="pb-5 text-center font-roboto">Made with love by Ahda &copy; 2026</footer>
+	</section>
 </main>

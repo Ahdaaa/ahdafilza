@@ -42,11 +42,15 @@
 						class="aspect-auto h-60 transform transition-transform duration-500 group-hover:scale-125 group-hover:brightness-50"
 					/>
 					<div
-						class="absolute inset-0 flex items-center justify-center text-xs text-white opacity-0 duration-500 group-hover:opacity-100 active:opacity-100"
+						class="absolute inset-0 flex items-center justify-center text-xs text-black opacity-0 duration-500 group-hover:opacity-100 active:opacity-100 dark:text-white"
 					>
 						<div class="flex max-w-[50%] flex-wrap justify-center gap-1">
 							{#each p.stack as s}
-								<p class="w-fit rounded-full border-2 border-solid border-white px-2 py-1">{s}</p>
+								<p
+									class="w-fit rounded-full border-2 border-solid border-black bg-white px-2 py-1 dark:border-white dark:bg-black"
+								>
+									{s}
+								</p>
 							{/each}
 						</div>
 					</div>

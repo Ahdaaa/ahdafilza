@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Me from '$lib/assets/Me.webp';
 	import { SKILLS_SECTIONS } from '$lib/config/skills';
+	import Tooltip from '$lib/ui/Tooltip.svelte';
 </script>
 
 <div
-	class="mx-auto flex h-full max-w-max flex-col items-center justify-center gap-10 font-roboto md:flex-row"
+	class="m-auto flex w-4/6 flex-col items-center justify-center gap-5 font-roboto md:flex-row md:gap-10"
 >
-	<div class="w-fit px-10 md:w-2/6 md:px-0">
+	<div class="w-full md:w-1/2 md:max-w-md">
 		<h1 class="mb-5 text-xl font-extrabold">Hello, <br />My name is Ahda.</h1>
 		<p class="text-sm">Im into Software Engineering.</p>
 		<p class="text-sm">
@@ -22,28 +23,21 @@
 
 		<div class="mt-5 flex justify-center gap-2 md:mt-2 md:justify-start">
 			{#each SKILLS_SECTIONS as s}
-				<div
-					class="group relative h-10 w-10 rounded-full bg-transparent transition duration-500 hover:-translate-y-0.5"
-					class:bg-white={s.alt === 'Nextjs'}
-				>
+				<Tooltip label={s.text} size={10}>
 					<img alt={s.alt} src={s.src} />
-					<span
-						class="src-center absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full px-2 py-1 text-xs whitespace-nowrap opacity-0 transition duration-500 group-hover:opacity-100 dark:bg-[#44444E]"
-						>{s.text}</span
-					>
-				</div>
+				</Tooltip>
 			{/each}
 		</div>
 	</div>
 
-	<div class="relative w-fit md:w-2/6">
+	<div class="relative w-1/2 max-w-fit">
 		<img
 			alt="Ahda Filza"
 			src={Me}
-			class="relative z-50 h-64 w-64 rounded-2xl grayscale-25 duration-1000 hover:translate-y-1 hover:grayscale-0 md:h-auto md:w-auto"
+			class="z-49 rounded-2xl grayscale-25 duration-1000 hover:translate-y-1 hover:grayscale-0"
 		/>
 		<div
-			class="absolute top-32 z-0 h-56 w-64 rounded-2xl bg-gray-300 md:right-0 md:h-80 md:w-80 dark:bg-[#44444E]"
+			class="absolute top-[30%] left-[30%] -z-1 h-[90%] w-[90%] rounded-2xl bg-gray-300 dark:bg-[#44444E]"
 		></div>
 	</div>
 </div>

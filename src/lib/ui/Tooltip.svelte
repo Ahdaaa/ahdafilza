@@ -11,7 +11,7 @@
 >
 	{@render children()}
 	<span
-		class="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full px-2 py-1 text-xs whitespace-nowrap opacity-0 transition duration-500 group-hover:opacity-100 dark:bg-[#44444E]"
+		class="absolute -bottom-[1/2] left-1/2 hidden -translate-x-1/2 rounded-full px-2 py-1 text-xs whitespace-nowrap transition duration-500 group-hover:block group-active:block dark:bg-[#44444E]"
 	>
 		{label}
 	</span>
