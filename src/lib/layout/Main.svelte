@@ -64,7 +64,7 @@
 	// we wont apply for mobile since ios will trigger resize on scroll
 	onMount(() => {
 		const onResize = () => {
-			if (isMobile()) scrollToIndex(currentIndex);
+			if (!isMobile()) scrollToIndex(currentIndex);
 		};
 
 		window.addEventListener('resize', onResize);
