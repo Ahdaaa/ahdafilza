@@ -11,20 +11,28 @@
 	};
 </script>
 
-<div class="mx-auto my-10 w-4/6 max-w-max font-roboto md:my-auto">
-	<h1 class="mb-5 text-xl font-extrabold">My Past Work & Projects.</h1>
-	<p class="max-w-2xl text-base">
+<div class="@container m-auto w-4/6 font-roboto">
+	<h1
+		class="mb-5 text-left text-xl font-extrabold
+           [@container(min-width:1100px)]:text-center"
+	>
+		My Past Work & Projects.
+	</h1>
+	<p
+		class="text-left text-base
+         [@container(min-width:1100px)]:text-center"
+	>
 		Take a look at my past work and projects that showcases my experience in development.
 	</p>
 
 	<div
 		bind:this={carousel}
 		onscroll={onCarouselScroll}
-		class="no-scrollbar mt-10 flex snap-x snap-mandatory gap-5 overflow-x-scroll"
+		class="no-scrollbar relative mt-10 flex snap-x snap-mandatory gap-5 overflow-x-scroll"
 	>
 		{#each PROJECT_SECTIONS as p, index}
 			<div
-				class="flex min-w-full snap-center flex-col gap-5 md:flex-row"
+				class="flex min-w-full snap-center flex-col justify-center gap-5 md:flex-row"
 				class:md:flex-row-reverse={index % 2 == 0}
 			>
 				<div class="group relative overflow-hidden rounded-lg">
