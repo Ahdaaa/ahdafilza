@@ -22,6 +22,9 @@
 		history.replaceState(null, '', activeHash);
 	});
 
+	// on mount runs on client side, makes the whole page not ssr
+	// since it relies on show.
+	// show needed to make fade in works.
 	onMount(() => {
 		show = true;
 	});
@@ -32,7 +35,5 @@
 		<Navbar {activeHash} {onNavigate} />
 
 		<Main bind:this={mainRef} {onIndexChange} />
-
-		<footer></footer>
 	</div>
 {/if}
