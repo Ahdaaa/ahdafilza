@@ -61,9 +61,10 @@
 	}
 
 	// we check for resize to prevent active navbar not matching
+	// we wont apply for mobile since ios will trigger resize on scroll
 	onMount(() => {
 		const onResize = () => {
-			scrollToIndex(currentIndex);
+			if (isMobile()) scrollToIndex(currentIndex);
 		};
 
 		window.addEventListener('resize', onResize);
